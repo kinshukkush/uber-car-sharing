@@ -1,0 +1,93 @@
+.pera {
+  background-color: #00000000;
+  padding: 40px 20px;
+  color: #333;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.pera h1 {
+  font-size: 2.5rem;
+  color: #121212;
+  margin-bottom: 15px;
+}
+
+.pera p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.testimonial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  background: #1c1c1c;
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-image {
+  width: 500px;
+  height: 500px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.testimonial-content {
+  margin-left: 30px;
+  text-align: left;
+  flex: 1;
+}
+
+.testimonial-content h3 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.testimonial-content .role {
+  font-size: 1.1rem;
+  color: #a5a5a5;
+  margin: 8px 0;
+}
+
+.testimonial-content .quote {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.navigation {
+  margin-top: 30px;
+}
+
+.navigation button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  margin: 0 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  font-size: 1.1rem;
+}
+
+.navigation button:hover {
+  background: #555;
+}
