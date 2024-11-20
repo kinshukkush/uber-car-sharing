@@ -1,0 +1,31 @@
+.main-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+}
+
+.option {
+    text-align: center;
+    margin: 0 20px;
+    cursor: pointer;
+}
+
+.option-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.option-image:hover {
+    transform: scale(1.20);
+    /* transform: scale(1.05); */
+}
+
+.option p {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: white;
+}

@@ -7,50 +7,65 @@ import image4 from '../assets/kush.jpg';
 import image5 from '../assets/kush3.jpg';
 import image6 from '../assets/vectorkin1.png';
 import image7 from '../assets/3dlogo.png';
+import dron from '../assets/dron.mp4';
 
 const AboutUs = () => {
   const testimonials = [
     {
-      img: image1,
+      type: 'image',
+      src: image1,
       name: 'Kinshuk Saxena',
       role: 'VP of Technology at FutureNet',
       quote: 'The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.',
     },
     {
-      img: image2,
-      name: 'kush Saxena',
+      type: 'image',
+      src: image2,
+      name: 'Kush Saxena',
       role: 'CEO at Innovatech',
       quote: 'A seamless experience that truly transformed the way we work.',
     },
     {
-      img: image3,
-      name: 'kinshuk Saxena',
+      type: 'image',
+      src: image3,
+      name: 'Kinshuk Saxena',
       role: 'Product Manager at KUSH.PVT.LTD',
       quote: 'User-friendly and efficient, the platform has become an indispensable part of our team.',
     },
     {
-      img: image4,
-      name: 'kinshuk Saxena',
+      type: 'image',
+      src: image4,
+      name: 'Kinshuk Saxena',
       role: 'CTO at CyberCore',
       quote: 'Outstanding support and unmatched functionality. A must-have tool!',
     },
     {
-      img: image5,
-      name: 'kinshuk Saxena',
+      type: 'image',
+      src: image5,
+      name: 'Kinshuk Saxena',
       role: 'Designer of UI/UX at Creartive',
       quote: 'Beautifully designed and incredibly intuitive to use.',
     },
     {
-      img: image6,
-      name: 'kinshuk Saxena',
+      type: 'image',
+      src: image6,
+      name: 'Kinshuk Saxena',
       role: 'Designer of UI/UX at Creartive',
       quote: 'Beautifully designed and incredibly intuitive to use.',
     },
     {
-      img: image7,
-      name: 'kinshuk Saxena',
+      type: 'image',
+      src: image7,
+      name: 'Kinshuk Saxena',
       role: 'Designer of UI/UX at Creartive',
       quote: 'Beautifully designed and incredibly intuitive to use.',
+    },
+    {
+      type: 'video',
+      src: dron,
+      name: 'Drone Footage',
+      role: 'Showcase Video',
+      quote: 'Experience the world from a new perspective.',
     },
   ];
 
@@ -80,11 +95,21 @@ const AboutUs = () => {
       </div>
       <div className="slider">
         <div className="testimonial">
-          <img
-            src={testimonials[currentIndex].img}
-            alt={testimonials[currentIndex].name}
-            className="testimonial-image"
-          />
+          {testimonials[currentIndex].type === 'image' ? (
+            <img
+              src={testimonials[currentIndex].src}
+              alt={testimonials[currentIndex].name}
+              className="testimonial-image"
+            />
+          ) : (
+            <video
+              src={testimonials[currentIndex].src}
+              autoPlay
+              loop
+              muted
+              className="testimonial-video"
+            ></video>
+          )}
           <div className="testimonial-content">
             <h3>{testimonials[currentIndex].name}</h3>
             <p className="role">{testimonials[currentIndex].role}</p>

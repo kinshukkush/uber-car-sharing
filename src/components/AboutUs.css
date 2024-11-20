@@ -91,3 +91,10 @@
 .navigation button:hover {
   background: #555;
 }
+
+.testimonial-video {
+  width: 500px;
+  height: 500px;
+  border-radius: 20px;
+  object-fit: cover;
+}

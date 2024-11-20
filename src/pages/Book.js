@@ -18,8 +18,8 @@ const Book = () => {
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
-        navigate('/lastpage', { state: { location, destination } }); // Pass location and destination here
-        // }, 10000);
+        navigate('/lastpage', { state: { location, destination } });
+        // }, 10000);       //increase the time to see the loading animation
       }, 100);
     } else {
       alert("Please select a price range first.");
