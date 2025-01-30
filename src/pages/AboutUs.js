@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import '../components/AboutUs.css';
-import image1 from '../assets/kush.jpg';
+import image1 from '../assets/img1.jpg';
 import image2 from '../assets/kush2.png';
-import image3 from '../assets/kush3.jpg';
+import image3 from '../assets/kinshukpic.jpg';
 import image4 from '../assets/kush.jpg';
 import image5 from '../assets/kush3.jpg';
-import image6 from '../assets/vectorkin1.png';
+import image6 from '../assets/vectorkin2.png';
 import image7 from '../assets/3dlogo.png';
 import dron from '../assets/dron.mp4';
 
@@ -15,8 +15,15 @@ const AboutUs = () => {
       type: 'image',
       src: image1,
       name: 'Kinshuk Saxena',
-      role: 'VP of Technology at FutureNet',
-      quote: 'The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.',
+      role: 'Web Developer and B.TechCSE Student',
+      quote: 'The combination of hands-on experience and academic knowledge has been instrumental in my growth as a web developer. I\'m excited to bring innovative solutions to the ever-evolving tech landscape.',
+    },
+    {
+      type: 'video',
+      src: dron,
+      name: 'kinshuk saxena',
+      role: 'Showcase Video',
+      quote: 'Experience the world from a new perspective.',
     },
     {
       type: 'image',
@@ -59,13 +66,6 @@ const AboutUs = () => {
       name: 'Kinshuk Saxena',
       role: 'Designer of UI/UX at Creartive',
       quote: 'Beautifully designed and incredibly intuitive to use.',
-    },
-    {
-      type: 'video',
-      src: dron,
-      name: 'Drone Footage',
-      role: 'Showcase Video',
-      quote: 'Experience the world from a new perspective.',
     },
   ];
 

@@ -140,7 +140,7 @@
 //     width: '100%',
 //     height: window.innerHeight - 100,
 //   };
-  
+
 //   const center = {
 //     lat: parseFloat(locationA.split(',')[0]) || 26.9124,  
 //     lng: parseFloat(locationA.split(',')[1]) || 75.7873,  
@@ -179,17 +179,17 @@
 //             zoom={10}
 //             options={{ mapId: '4113717585f11867' }}
 //           >
-            
+
 //             <MarkerF
 //               position={center}
 //               onClick={() => setActiveMarker('locationA')}
 //             />
-            
+
 //             <MarkerF
 //               position={destination}
 //               onClick={() => setActiveMarker('locationB')}
 //             />
-            
+
 //             {activeMarker === 'locationA' && (
 //               <InfoWindow
 //                 position={center}
@@ -267,8 +267,267 @@
 
 
 
+// import React, { useState, useEffect } from 'react';
+// import { GoogleMap, LoadScript, MarkerF, InfoWindow } from '@react-google-maps/api';
+// import { useLocation } from 'react-router-dom';
+// import '../components/LastPage.css';
+
+// const LastPage = () => {
+//   const [loading, setLoading] = useState(true);
+//   const [activeMarker, setActiveMarker] = useState(null);
+//   const location = useLocation();
+
+//   const { location: locationA = '', destination: locationB = '' } = location.state || {};
+
+//   const containerStyle = {
+//     width: '100%',
+//     height: `${window.innerHeight - 100}px`,
+//   };
+
+//   const parseCoordinates = (input, defaultCoords) => {
+//     const coords = input.split(',').map((val) => parseFloat(val.trim()));
+//     if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
+//       return { lat: coords[0], lng: coords[1] };
+//     }
+//     return defaultCoords;
+//   };
+
+//   const center = parseCoordinates(locationA, { lat: 26.9124, lng: 75.7873 }); // Default: Jaipur
+//   const destination = parseCoordinates(locationB, { lat: 28.7041, lng: 77.1025 }); // Default: Delhi
+
+//   useEffect(() => {
+//     const timer = setTimeout(() => {
+//       setLoading(false);
+//     }, 1000);
+
+//     return () => clearTimeout(timer);
+//   }, []);
+
+//   if (loading) {
+//     return (
+//       <div className="loading-container">
+//         <div className="loading-animation"></div>
+//         <p>Confirming Booking...</p>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="last-page-container">
+//       <div className="map-container">
+//         <h2>Your Trip: {locationA || 'Jaipur'} to {locationB || 'Delhi'}</h2>
+//         <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
+//           <GoogleMap
+//             mapContainerStyle={containerStyle}
+//             center={center}
+//             zoom={10}
+//           >
+
+//             <MarkerF
+//               position={center}
+//               onClick={() => setActiveMarker('locationA')}
+//             />
+//             <MarkerF
+//               position={destination}
+//               onClick={() => setActiveMarker('locationB')}
+//             />
+
+//             {activeMarker === 'locationA' && (
+//               <InfoWindow
+//                 position={center}
+//                 onCloseClick={() => setActiveMarker(null)}
+//               >
+//                 <div>
+//                   <h3>Location A</h3>
+//                   <p>{locationA || 'Jaipur (default)'}</p>
+//                   <p>Latitude: {center.lat}</p>
+//                   <p>Longitude: {center.lng}</p>
+//                 </div>
+//               </InfoWindow>
+//             )}
+//             {activeMarker === 'locationB' && (
+//               <InfoWindow
+//                 position={destination}
+//                 onCloseClick={() => setActiveMarker(null)}
+//               >
+//                 <div>
+//                   <h3>Location B</h3>
+//                   <p>{locationB || 'Delhi (default)'}</p>
+//                   <p>Latitude: {destination.lat}</p>
+//                   <p>Longitude: {destination.lng}</p>
+//                 </div>
+//               </InfoWindow>
+//             )}
+//           </GoogleMap>
+//         </LoadScript>
+//       </div>
+//       <footer className="footer"></footer>
+//     </div>
+//   );
+// };
+
+// export default LastPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+// import { useLocation } from 'react-router-dom';
+// import { LatLng } from 'leaflet';
+// import 'leaflet/dist/leaflet.css';
+// import '../components/LastPage.css';
+
+// const LastPage = () => {
+//   const [loading, setLoading] = useState(true);
+//   const location = useLocation();
+
+//   const { location: locationA = '', destination: locationB = '' } = location.state || {};
+
+//   const parseCoordinates = (input, defaultCoords) => {
+//     const coords = input.split(',').map((val) => parseFloat(val.trim()));
+//     if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
+//       return new LatLng(coords[0], coords[1]);
+//     }
+//     return new LatLng(defaultCoords.lat, defaultCoords.lng);
+//   };
+
+//   const center = parseCoordinates(locationA, { lat: 26.9124, lng: 75.7873 }); 
+//   const destination = parseCoordinates(locationB, { lat: 28.7041, lng: 77.1025 }); 
+
+//   useEffect(() => {
+//     const timer = setTimeout(() => {
+//       setLoading(false);
+//     }, 1000);
+
+//     return () => clearTimeout(timer);
+//   }, []);
+
+//   if (loading) {
+//     return (
+//       <div className="loading-container">
+//         <div className="loading-animation"></div>
+//         <p>Confirming Booking...</p>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="last-page-container">
+//       <div className="map-container">
+//         <h2>Your Trip: {locationA || 'Jaipur'} to {locationB || 'Delhi'}</h2>
+//         <MapContainer center={center} zoom={10} style={{ height: '100%', width: '100%' }}>
+//           <TileLayer
+//             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+//             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//           />
+//           <Marker position={center}>
+//             <Popup>
+//               <h3>Location A</h3>
+//               <p>{locationA || 'Jaipur (default)'}</p>
+//               <p>Latitude: {center.lat}</p>
+//               <p>Longitude: {center.lng}</p>
+//             </Popup>
+//           </Marker>
+//           <Marker position={destination}>
+//             <Popup>
+//               <h3>Location B</h3>
+//               <p>{locationB || 'Delhi (default)'}</p>
+//               <p>Latitude: {destination.lat}</p>
+//               <p>Longitude: {destination.lng}</p>
+//             </Popup>
+//           </Marker>
+//         </MapContainer>
+//       </div>
+//       <footer className="footer"></footer>
+//     </div>
+//   );
+// };
+
+// export default LastPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, MarkerF, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, MarkerF, InfoWindow } from '@react-google-maps/api';
 import { useLocation } from 'react-router-dom';
 import '../components/LastPage.css';
 
@@ -292,8 +551,8 @@ const LastPage = () => {
     return defaultCoords;
   };
 
-  const center = parseCoordinates(locationA, { lat: 26.9124, lng: 75.7873 }); // Default: Jaipur
-  const destination = parseCoordinates(locationB, { lat: 28.7041, lng: 77.1025 }); // Default: Delhi
+  const center = parseCoordinates(locationA, { lat: 26.9124, lng: 75.7873 });
+  const destination = parseCoordinates(locationB, { lat: 28.7041, lng: 77.1025 });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -316,50 +575,46 @@ const LastPage = () => {
     <div className="last-page-container">
       <div className="map-container">
         <h2>Your Trip: {locationA || 'Jaipur'} to {locationB || 'Delhi'}</h2>
-        <LoadScript googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY">
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={10}
-          >
-            
-            <MarkerF
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={10}
+        >
+          <MarkerF
+            position={center}
+            onClick={() => setActiveMarker('locationA')}
+          />
+          <MarkerF
+            position={destination}
+            onClick={() => setActiveMarker('locationB')}
+          />
+          {activeMarker === 'locationA' && (
+            <InfoWindow
               position={center}
-              onClick={() => setActiveMarker('locationA')}
-            />
-            <MarkerF
+              onCloseClick={() => setActiveMarker(null)}
+            >
+              <div>
+                <h3>Location A</h3>
+                <p>{locationA || 'Jaipur (default)'}</p>
+                <p>Latitude: {center.lat}</p>
+                <p>Longitude: {center.lng}</p>
+              </div>
+            </InfoWindow>
+          )}
+          {activeMarker === 'locationB' && (
+            <InfoWindow
               position={destination}
-              onClick={() => setActiveMarker('locationB')}
-            />
-            
-            {activeMarker === 'locationA' && (
-              <InfoWindow
-                position={center}
-                onCloseClick={() => setActiveMarker(null)}
-              >
-                <div>
-                  <h3>Location A</h3>
-                  <p>{locationA || 'Jaipur (default)'}</p>
-                  <p>Latitude: {center.lat}</p>
-                  <p>Longitude: {center.lng}</p>
-                </div>
-              </InfoWindow>
-            )}
-            {activeMarker === 'locationB' && (
-              <InfoWindow
-                position={destination}
-                onCloseClick={() => setActiveMarker(null)}
-              >
-                <div>
-                  <h3>Location B</h3>
-                  <p>{locationB || 'Delhi (default)'}</p>
-                  <p>Latitude: {destination.lat}</p>
-                  <p>Longitude: {destination.lng}</p>
-                </div>
-              </InfoWindow>
-            )}
-          </GoogleMap>
-        </LoadScript>
+              onCloseClick={() => setActiveMarker(null)}
+            >
+              <div>
+                <h3>Location B</h3>
+                <p>{locationB || 'Delhi (default)'}</p>
+                <p>Latitude: {destination.lat}</p>
+                <p>Longitude: {destination.lng}</p>
+              </div>
+            </InfoWindow>
+          )}
+        </GoogleMap>
       </div>
       <footer className="footer"></footer>
     </div>
@@ -367,3 +622,6 @@ const LastPage = () => {
 };
 
 export default LastPage;
+
+
+// --------------------working correctly-------------------
