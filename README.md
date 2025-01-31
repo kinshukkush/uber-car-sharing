@@ -1,9 +1,8 @@
-Here’s an outline for your `README.md` file. This will give a clear overview of your project and guide others on how to use it. You can customize this as needed:
 
-```markdown
 # Car Sharing Platform
 
-A web-based car-sharing platform designed to connect private vehicle owners with individuals in need of a ride. The platform aims to reduce traffic congestion, pollution, and overcrowded public transportation by facilitating easy and secure car-sharing opportunities.
+A web-based car-sharing platform designed to connect private vehicle owners with individuals in need of a ride. The platform aims to 
+reduce traffic congestion, pollution, and overcrowded public transportation by facilitating easy and secure car-sharing opportunities.
 
 ## Features
 - **User Registration & Login**: Secure authentication for both drivers and passengers.
