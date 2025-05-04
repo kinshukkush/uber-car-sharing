@@ -35,7 +35,7 @@ function App() {
                   <Route path="/services" element={<Services />} />
                   <Route path="/lastpage" element={<LastPage />} />
                   <Route path="/loginform" element={<LoginForm />} />
-                  <Route path="/rentcar" element={<RentCar />} /> {/* Add this route */}
+                  <Route path="/rentcar" element={<RentCar />} />
                 </Routes>
                 <Footer />
               </>

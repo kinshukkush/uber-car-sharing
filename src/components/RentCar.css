@@ -1,24 +1,17 @@
 .rent-car-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+  align-items: flex-start;
+  padding: 50px;
+  background-color: #f9f9f9;
 }
 
 .form-container {
   width: 60%;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
-}
-
-.rent-car-form {
-  display: flex;
-  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .rent-car-form h2 {
@@ -28,108 +21,99 @@
 
 .form-group {
   margin-bottom: 15px;
+  position: relative;
 }
 
 .form-group label {
-  font-size: 16px;
+  display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.form-group input {
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="checkbox"] {
   width: 100%;
   padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  outline: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border 0.3s ease;
 }
 
 .form-group input:focus {
-  border-color: #4A90E2;
-}
-
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 5px;
+  border-color: #007bff;
 }
 
 .form-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
-.submit-btn,
-.clear-btn {
-  width: 48%;
-  padding: 10px;
-  font-size: 16px;
+.submit-btn, .clear-btn {
+  background-color: #007bff;
+  color: white;
   border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.submit-btn {
-  background-color: #4A90E2;
-  color: #fff;
+.submit-btn:hover, .clear-btn:hover {
+  background-color: #0056b3;
 }
 
-.submit-btn:hover {
-  background-color: #357ABD;
+.error {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 5px;
 }
 
-.clear-btn {
-  background-color: #f1f1f1;
+.confirmation-container {
+  text-align: center;
+  max-width: 600px;
+  padding: 50px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-text {
+  margin-top: 20px;
+  font-size: 1.25rem;
   color: #333;
 }
 
-.clear-btn:hover {
-  background-color: #ddd;
-}
-
 .car-image {
-  width: 35%;
-  padding-left: 20px;
+  width: 30%;
+  max-width: 300px;
+  margin-left: 20px;
 }
 
 .car-image img {
   width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.confirmation-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .loading-spinner {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #4A90E2;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 2s linear infinite;
-  margin-bottom: 20px;
-}
-
-.confirmation-text {
-  font-size: 18px;
-  color: #4A90E2;
-  text-align: center;
-  margin-top: 100px;
-  height: 50vh;
+  border-left-color: #007bff;
+  animation: spin 1s ease infinite;
+  margin: auto;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
+  from {
+      transform: rotate(0deg);
   }
-
-  100% {
-    transform: rotate(360deg);
+  to {
+      transform: rotate(360deg);
   }
 }
