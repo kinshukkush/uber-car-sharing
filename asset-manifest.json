@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7e74c1b9.css",
+    "main.js": "/static/js/main.94a265ab.js",
+    "static/js/453.4281e6e9.chunk.js": "/static/js/453.4281e6e9.chunk.js",
+    "static/media/3dlogo.png": "/static/media/3dlogo.2bf0b99fde9f0b4a982e.png",
+    "static/media/dron.mp4": "/static/media/dron.d2f6d2e6df90e4c21d1d.mp4",
+    "static/media/kush2.png": "/static/media/kush2.f85bb4fe7675628980c2.png",
+    "static/media/vectorkin2.png": "/static/media/vectorkin2.dd4c416188e8d44f874b.png",
+    "static/media/city-img.png": "/static/media/city-img.9b92e79565f20c0956d7.png",
+    "static/media/img1.jpg": "/static/media/img1.40187f39c9a0a5675e14.jpg",
+    "static/media/rent-a-car.png": "/static/media/rent-a-car.4107893ec4beff8c258e.png",
+    "static/media/hyper city.png": "/static/media/hyper city.84f7866b1e385d2b93fb.png",
+    "static/media/book-a-ride.png": "/static/media/book-a-ride.18da966044dbaa238ce1.png",
+    "static/media/hyper.png": "/static/media/hyper.951eb4121c0c8a52a709.png",
+    "static/media/carLogo.png": "/static/media/carLogo.b21be944d47c599ade4e.png",
+    "static/media/kush3.jpg": "/static/media/kush3.9f6e9091005c23532ab4.jpg",
+    "static/media/kinshukpic.jpg": "/static/media/kinshukpic.1d4a47656b508f4a3dc9.jpg",
+    "static/media/kush.jpg": "/static/media/kush.97289f0bb78694dacd34.jpg",
+    "static/media/Ride-with-Uber.png": "/static/media/Ride-with-Uber.eff96b18d09c4b92968b.png",
+    "static/media/uber-square.png": "/static/media/uber-square.0d40554bb173edd03e07.png",
+    "static/media/fleet-management.jpg": "/static/media/fleet-management.895397b1358fdd1ba180.jpg",
+    "static/media/driver-image.png": "/static/media/driver-image.59e8cd888562f8f2e6e1.png",
+    "static/media/city-background.jpg": "/static/media/city-background.880e5c03b05e51bf69f8.jpg",
+    "static/media/path-to-your-car-image.png": "/static/media/path-to-your-car-image.8c064bff97f09f87cfe3.png",
+    "index.html": "/index.html",
+    "main.7e74c1b9.css.map": "/static/css/main.7e74c1b9.css.map",
+    "main.94a265ab.js.map": "/static/js/main.94a265ab.js.map",
+    "453.4281e6e9.chunk.js.map": "/static/js/453.4281e6e9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e74c1b9.css",
+    "static/js/main.94a265ab.js"
+  ]
+}
