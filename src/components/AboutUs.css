@@ -1,0 +1,382 @@
+/* src/components/AboutUs.css */
+
+/* =============================================
+   1. ROOT VARIABLES & GLOBAL STYLES
+   ============================================= */
+:root {
+  --dark-primary: #0D1117; /* GitHub Dark Background */
+  --dark-secondary: #161B22; /* GitHub Dark Lighter Background */
+  --border-color: #30363d;
+  --text-primary: #c9d1d9; /* GitHub Dark Main Text */
+  --text-secondary: #8b949e; /* GitHub Dark Secondary Text */
+  --accent-primary: #58a6ff; /* GitHub Blue */
+  --accent-hover: #79c0ff;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.about-us-container {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background-color: var(--dark-primary);
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* =============================================
+   2. HEADER SECTION
+   ============================================= */
+.about-header {
+  text-align: center;
+  padding: 100px 20px 60px;
+  background: linear-gradient(145deg, var(--dark-secondary) 0%, var(--dark-primary) 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.about-header h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+.about-header p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =============================================
+   3. OUR STORY / MISSION SECTION
+   ============================================= */
+.our-story-section {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark-primary);
+}
+
+.our-story-content {
+  max-width: 900px;
+  text-align: center;
+}
+
+.our-story-content h2 {
+  font-size: 2.8rem;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.our-story-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+
+/* =============================================
+   4. CORE VALUES SECTION
+   ============================================= */
+.values-section {
+  padding: 80px 20px;
+  background-color: var(--dark-secondary);
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.values-section h2 {
+  font-size: 2.8rem;
+  color: #fff;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: var(--dark-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--accent-primary);
+}
+
+.value-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.value-card p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* =============================================
+   5. TEAM SLIDER SECTION
+   ============================================= */
+.team-section {
+  padding: 100px 20px;
+  background-color: var(--dark-primary);
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2.8rem;
+  margin-bottom: 50px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.team-slider {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.slide-container {
+  background: var(--dark-secondary);
+  border: 1px solid var(--border-color);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.team-member-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--border-color);
+  transition: transform 0.4s ease;
+}
+
+.slide-container:hover .team-member-image {
+  transform: scale(1.05);
+}
+
+.team-member-content {
+  text-align: left;
+  flex: 1;
+}
+
+.team-member-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.team-member-content .role {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin: 8px 0 20px;
+  font-weight: 500;
+}
+
+.team-member-content .quote {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--text-primary);
+  border-left: 3px solid var(--accent-primary);
+  padding-left: 20px;
+}
+
+.slider-navigation {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.nav-arrow {
+  background: var(--dark-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-arrow:hover {
+  background: var(--accent-primary);
+  color: #fff;
+  border-color: var(--accent-primary);
+  transform: scale(1.1);
+}
+
+.slider-dots {
+  display: flex;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 6px;
+  background-color: var(--border-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none; /* Ensure dots are clean */
+  padding: 0;
+}
+
+.dot.active {
+  background-color: var(--accent-primary);
+  transform: scale(1.3);
+}
+
+/* =============================================
+   6. STATS SECTION
+   ============================================= */
+.stats-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #3a8ee8 100%);
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 20px;
+  min-width: 220px;
+  margin: 10px;
+}
+
+.stat-card h3 {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.stat-card p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* =============================================
+   7. JOIN US CTA SECTION
+   ============================================= */
+.join-us-section {
+  padding: 100px 20px;
+  text-align: center;
+  background-color: var(--dark-secondary);
+  border-top: 1px solid var(--border-color);
+}
+
+.join-us-section h2 {
+  font-size: 2.8rem;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.join-us-section p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.join-button {
+  background: var(--accent-primary);
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.2);
+}
+
+.join-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 7px 20px rgba(88, 166, 255, 0.3);
+}
+
+/* =============================================
+   8. RESPONSIVE DESIGN
+   ============================================= */
+@media (max-width: 992px) {
+  .slide-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .team-member-content {
+    text-align: center;
+  }
+  .team-member-content .quote {
+    border-left: none;
+    border-top: 3px solid var(--accent-primary);
+    padding-left: 0;
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-header h1, .our-story-content h2, .values-section h2, .team-section h2, .join-us-section h2 {
+    font-size: 2.5rem;
+  }
+  .stat-card h3 {
+    font-size: 2.8rem;
+  }
+  .slide-container {
+    padding: 30px;
+  }
+  .team-member-image {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-section {
+    flex-direction: column;
+    align-items: center;
+  }
+}

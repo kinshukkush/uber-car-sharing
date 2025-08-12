@@ -1,0 +1,228 @@
+/* src/components/Navbar.css */
+
+/* =============================================
+   1. ROOT VARIABLES & GLOBAL STYLES
+   ============================================= */
+:root {
+  --dark-primary: #0D1117;
+  --dark-secondary: #161B22;
+  --border-color: #30363d;
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --accent-primary: #58a6ff;
+  --accent-hover: #79c0ff;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* =============================================
+   2. NAVBAR CONTAINER & SCROLL EFFECTS
+   ============================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+.navbar.scrolled {
+  background: rgba(22, 27, 34, 0.8); /* --dark-secondary with transparency */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 70px;
+  transition: height 0.3s ease;
+}
+
+.navbar.scrolled .navbar-container {
+  height: 65px;
+}
+
+/* =============================================
+   3. LOGO & DESKTOP NAVIGATION
+   ============================================= */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.navbar-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover .navbar-logo-img {
+  transform: rotate(15deg);
+}
+
+.navbar-logo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.navbar-links-desktop {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.navbar-links-desktop li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-links-desktop li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-primary);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.navbar-links-desktop li a:hover,
+.navbar-links-desktop li a.active {
+  color: var(--text-primary);
+}
+
+.navbar-links-desktop li a:hover::after,
+.navbar-links-desktop li a.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* =============================================
+   4. NAVBAR ACTIONS (Login Button & Menu Icon)
+   ============================================= */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-button {
+  background-color: var(--accent-primary);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.2);
+}
+
+.menu-icon {
+  display: none; /* Hidden on desktop */
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* =============================================
+   5. MOBILE MENU
+   ============================================= */
+.navbar-links-mobile {
+  display: none; /* Hidden on desktop */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--dark-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
+
+.navbar-links-mobile ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar-links-mobile li {
+  width: 100%;
+  text-align: center;
+}
+
+.navbar-links-mobile li a {
+  display: block;
+  padding: 1rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-links-mobile li a:hover,
+.navbar-links-mobile li a.active {
+  color: var(--text-primary);
+  background-color: rgba(88, 166, 255, 0.1);
+}
+
+.login-button-mobile {
+  display: block;
+  margin: 1rem 2rem 0.5rem;
+  background-color: var(--accent-primary);
+  color: #fff !important; /* Override other link styles */
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* =============================================
+   6. RESPONSIVE DESIGN
+   ============================================= */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1.5rem;
+  }
+  .navbar-links-desktop {
+    display: none;
+  }
+  .login-button {
+    display: none;
+  }
+  .menu-icon {
+    display: block;
+  }
+  .navbar-links-mobile {
+    display: block;
+  }
+}

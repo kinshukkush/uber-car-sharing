@@ -1,0 +1,162 @@
+/* src/components/Services.css */
+
+/* =============================================
+   1. ROOT VARIABLES & GLOBAL STYLES
+   ============================================= */
+:root {
+  --dark-primary: #0D1117;
+  --dark-secondary: #161B22;
+  --border-color: #30363d;
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --accent-primary: #58a6ff;
+  --accent-hover: #79c0ff;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* =============================================
+   2. SERVICES CONTAINER & HEADER
+   ============================================= */
+.services-container {
+  padding: 100px 20px;
+  text-align: center;
+  background-color: var(--dark-primary);
+  font-family: var(--font-sans);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.services-header {
+  margin-bottom: 60px;
+}
+
+.services-header h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+.services-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* =============================================
+   3. SERVICES GRID
+   ============================================= */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* =============================================
+   4. SERVICE CARD
+   ============================================= */
+.service-card {
+  background: var(--dark-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 15px 35px rgba(88, 166, 255, 0.1);
+}
+
+.service-image-container {
+  height: 220px;
+  overflow: hidden;
+}
+
+.service-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.service-card:hover .service-image-container img {
+  transform: scale(1.05);
+}
+
+.service-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows the button to be pushed to the bottom */
+}
+
+.service-icon {
+  font-size: 2rem;
+  color: var(--accent-primary);
+  margin-bottom: 15px;
+}
+
+.service-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.service-content p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex-grow: 1; /* Pushes content below it down */
+  margin-bottom: 25px;
+}
+
+.service-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin-top: auto; /* Pushes button to the bottom */
+  align-self: flex-start; /* Aligns button to the left */
+}
+
+.service-cta-button:hover {
+  background-color: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(88, 166, 255, 0.2);
+}
+
+/* =============================================
+   5. RESPONSIVE DESIGN
+   ============================================= */
+@media (max-width: 768px) {
+  .services-container {
+    padding: 80px 20px;
+  }
+  .services-header h2 {
+    font-size: 2.2rem;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
