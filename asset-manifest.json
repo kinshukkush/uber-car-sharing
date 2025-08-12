@@ -1,32 +1,26 @@
 {
   "files": {
-    "main.css": "/uber-car-sharing/static/css/main.20911145.css",
-    "main.js": "/uber-car-sharing/static/js/main.31f092a6.js",
+    "main.css": "/uber-car-sharing/static/css/main.eef46bea.css",
+    "main.js": "/uber-car-sharing/static/js/main.59c832ef.js",
     "static/js/488.d7983bd9.chunk.js": "/uber-car-sharing/static/js/488.d7983bd9.chunk.js",
-    "static/media/3dlogo.png": "/uber-car-sharing/static/media/3dlogo.2bf0b99fde9f0b4a982e.png",
-    "static/media/dron.mp4": "/uber-car-sharing/static/media/dron.d2f6d2e6df90e4c21d1d.mp4",
     "static/media/kush2.png": "/uber-car-sharing/static/media/kush2.f85bb4fe7675628980c2.png",
-    "static/media/vectorkin2.png": "/uber-car-sharing/static/media/vectorkin2.dd4c416188e8d44f874b.png",
     "static/media/city-img.png": "/uber-car-sharing/static/media/city-img.9b92e79565f20c0956d7.png",
     "static/media/img1.jpg": "/uber-car-sharing/static/media/img1.40187f39c9a0a5675e14.jpg",
     "static/media/hyper city.png": "/uber-car-sharing/static/media/hyper city.84f7866b1e385d2b93fb.png",
     "static/media/hyper.png": "/uber-car-sharing/static/media/hyper.951eb4121c0c8a52a709.png",
     "static/media/carLogo.png": "/uber-car-sharing/static/media/carLogo.b21be944d47c599ade4e.png",
-    "static/media/kush3.jpg": "/uber-car-sharing/static/media/kush3.9f6e9091005c23532ab4.jpg",
     "static/media/kinshukpic.jpg": "/uber-car-sharing/static/media/kinshukpic.1d4a47656b508f4a3dc9.jpg",
-    "static/media/kush.jpg": "/uber-car-sharing/static/media/kush.97289f0bb78694dacd34.jpg",
     "static/media/Ride-with-Uber.png": "/uber-car-sharing/static/media/Ride-with-Uber.eff96b18d09c4b92968b.png",
-    "static/media/uber-square.png": "/uber-car-sharing/static/media/uber-square.0d40554bb173edd03e07.png",
     "static/media/fleet-management.jpg": "/uber-car-sharing/static/media/fleet-management.895397b1358fdd1ba180.jpg",
     "static/media/driver-image.png": "/uber-car-sharing/static/media/driver-image.59e8cd888562f8f2e6e1.png",
     "static/media/path-to-your-car-image.png": "/uber-car-sharing/static/media/path-to-your-car-image.8c064bff97f09f87cfe3.png",
     "index.html": "/uber-car-sharing/index.html",
-    "main.20911145.css.map": "/uber-car-sharing/static/css/main.20911145.css.map",
-    "main.31f092a6.js.map": "/uber-car-sharing/static/js/main.31f092a6.js.map",
+    "main.eef46bea.css.map": "/uber-car-sharing/static/css/main.eef46bea.css.map",
+    "main.59c832ef.js.map": "/uber-car-sharing/static/js/main.59c832ef.js.map",
     "488.d7983bd9.chunk.js.map": "/uber-car-sharing/static/js/488.d7983bd9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.20911145.css",
-    "static/js/main.31f092a6.js"
+    "static/css/main.eef46bea.css",
+    "static/js/main.59c832ef.js"
   ]
 }
