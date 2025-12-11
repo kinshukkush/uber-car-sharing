@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  FaCar, FaMapMarkerAlt, FaClock, FaMoneyBillWave, 
+  FaCar, FaMapMarkerAlt, FaMoneyBillWave, 
   FaStar, FaArrowRight, FaPhone, FaCommentDots, FaCheckCircle 
 } from 'react-icons/fa';
 import '../components/LastPage.css';
@@ -29,10 +29,7 @@ const LastPage = () => {
     location: pickupLocation = 'Jaipur', 
     destination = 'Delhi',
     price = 750,
-    car = 'Standard Sedan',
-    date = new Date().toISOString().substr(0, 10),
-    time = new Date().toTimeString().substr(0, 5),
-    passengers = 1
+    car = 'Standard Sedan'
   } = location.state || {};
 
   useEffect(() => {
@@ -51,7 +48,8 @@ const LastPage = () => {
     setTimeout(() => {
         // Example: navigate('/trip-status', { state: { tripId: '123' } });
     }, 4000);
-  }, [navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // --- Animation Variants ---
   const containerVariants = {

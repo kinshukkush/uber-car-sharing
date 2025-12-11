@@ -189,14 +189,64 @@ const AboutUs = () => {
         </motion.div>
       </section>
 
+      <section className="timeline-section">
+        <motion.h2 variants={itemVariants}>Our Journey</motion.h2>
+        <div className="timeline">
+          <motion.div className="timeline-item" variants={itemVariants} whileHover={{ scale: 1.05 }}>
+            <div className="timeline-marker"></div>
+            <div className="timeline-content">
+              <h3>2020 - The Beginning</h3>
+              <p>CarShare was founded with a vision to revolutionize urban transportation and reduce carbon emissions.</p>
+            </div>
+          </motion.div>
+          <motion.div className="timeline-item" variants={itemVariants} whileHover={{ scale: 1.05 }}>
+            <div className="timeline-marker"></div>
+            <div className="timeline-content">
+              <h3>2021 - First 10,000 Rides</h3>
+              <p>Reached our first major milestone with 10,000 successful rides and expanded to 3 major cities.</p>
+            </div>
+          </motion.div>
+          <motion.div className="timeline-item" variants={itemVariants} whileHover={{ scale: 1.05 }}>
+            <div className="timeline-marker"></div>
+            <div className="timeline-content">
+              <h3>2023 - National Expansion</h3>
+              <p>Expanded services nationwide with over 50,000 active users and 500+ drivers.</p>
+            </div>
+          </motion.div>
+          <motion.div className="timeline-item" variants={itemVariants} whileHover={{ scale: 1.05 }}>
+            <div className="timeline-marker"></div>
+            <div className="timeline-content">
+              <h3>2025 - Going Green</h3>
+              <p>Launched our electric vehicle initiative, saved 1,200 tons of CO₂, and partnered with leading EV manufacturers.</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="mission-vision-section">
+        <motion.div className="mission-card" variants={itemVariants} whileHover={{ y: -10, boxShadow: "0 15px 40px rgba(0,200,83,0.3)" }}>
+          <h3>Our Mission</h3>
+          <p>To provide accessible, affordable, and sustainable transportation solutions that connect communities and reduce environmental impact while empowering drivers to earn on their terms.</p>
+        </motion.div>
+        <motion.div className="vision-card" variants={itemVariants} whileHover={{ y: -10, boxShadow: "0 15px 40px rgba(0,176,255,0.3)" }}>
+          <h3>Our Vision</h3>
+          <p>To become the world's most trusted ride-sharing platform, transforming urban mobility through technology, innovation, and a commitment to a cleaner, more connected future for all.</p>
+        </motion.div>
+      </section>
+
       <section className="join-us-section">
         <motion.h2 variants={itemVariants}>Be Part of the Solution</motion.h2>
         <motion.p variants={itemVariants}>
           Whether you're a driver looking to earn or a passenger seeking a smarter way to travel, you can help shape the future of transportation.
         </motion.p>
-        <motion.button className="join-button" variants={itemVariants}>
-          Get Started
-        </motion.button>
+        <div className="join-buttons">
+          <motion.button className="join-button primary" variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            Start Riding
+          </motion.button>
+          <motion.button className="join-button secondary" variants={itemVariants} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            Become a Driver
+          </motion.button>
+        </div>
       </section>
     </motion.div>
   );

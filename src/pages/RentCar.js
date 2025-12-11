@@ -6,13 +6,11 @@ import {
   FaSearch, 
   FaStar, 
   FaMapMarkerAlt, 
-  FaCalendarAlt,
   FaGasPump,
   FaUsers,
   FaCog,
   FaHeart,
   FaRegHeart,
-  FaSort,
   FaTimes,
   FaCheck
 } from 'react-icons/fa';
@@ -155,10 +153,12 @@ const RentCar = () => {
       setFilteredCars(mockCars);
       setLoading(false);
     }, 1500);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     applyFilters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, searchTerm, sortBy, cars]);
 
   const applyFilters = () => {

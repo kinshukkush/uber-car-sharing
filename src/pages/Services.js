@@ -88,21 +88,107 @@ const Services = () => {
             className="service-card"
             key={index}
             variants={itemVariants}
+            whileHover={{ y: -15, boxShadow: "0 20px 50px rgba(0,200,83,0.3)" }}
+            transition={{ type: "spring", stiffness: 300 }}
           >
             <div className="service-image-container">
               <img src={service.image} alt={service.title} />
+              <div className="service-overlay">
+                <span className="service-location">{service.location}</span>
+              </div>
             </div>
             <div className="service-content">
               <div className="service-icon">{service.icon}</div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <a href="/book" className="service-cta-button">
+              <div className="service-features">
+                {service.features.map((feature, i) => (
+                  <motion.div 
+                    key={i} 
+                    className="feature-badge"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    {feature}
+                  </motion.div>
+                ))}
+              </div>
+              <motion.a 
+                href="/uber-car-sharing/services" 
+                className="service-cta-button"
+                whileHover={{ scale: 1.05, x: 5 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 Book Now <FaArrowRight />
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         ))}
       </motion.div>
+
+      <motion.section 
+        className="why-choose-section"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
+        <motion.h2 variants={itemVariants}>Why Choose Our Services?</motion.h2>
+        <div className="benefits-grid">
+          <motion.div className="benefit-box" variants={itemVariants} whileHover={{ scale: 1.05 }}>
+            <div className="benefit-icon">🚀</div>
+            <h3>Fast & Reliable</h3>
+            <p>Quick pickups with average wait time under 5 minutes</p>
+          </motion.div>
+          <motion.div className="benefit-box" variants={itemVariants} whileHover={{ scale: 1.05 }}>
+            <div className="benefit-icon">💰</div>
+            <h3>Affordable Rates</h3>
+            <p>Transparent pricing with no hidden charges or surge fees</p>
+          </motion.div>
+          <motion.div className="benefit-box" variants={itemVariants} whileHover={{ scale: 1.05 }}>
+            <div className="benefit-icon">🔒</div>
+            <h3>Safe & Secure</h3>
+            <p>Verified drivers and real-time tracking for your safety</p>
+          </motion.div>
+          <motion.div className="benefit-box" variants={itemVariants} whileHover={{ scale: 1.05 }}>
+            <div className="benefit-icon">⭐</div>
+            <h3>Top Rated</h3>
+            <p>4.9/5 average rating from thousands of satisfied customers</p>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      <motion.section 
+        className="download-app-section"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+      >
+        <motion.div className="download-content" variants={itemVariants}>
+          <h2>Get Started in Minutes</h2>
+          <p>Download our app and book your first ride today. Available on iOS and Android.</p>
+          <div className="app-buttons">
+            <motion.button 
+              className="app-store-btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="btn-icon">📱</span>
+              <span>Download on App Store</span>
+            </motion.button>
+            <motion.button 
+              className="play-store-btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="btn-icon">📱</span>
+              <span>Get it on Google Play</span>
+            </motion.button>
+          </div>
+        </motion.div>
+      </motion.section>
     </motion.div>
   );
 };

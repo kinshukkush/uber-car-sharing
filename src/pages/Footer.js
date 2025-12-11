@@ -45,7 +45,7 @@ const Footer = () => {
                 <FaFacebook />
               </motion.a>
               <motion.a 
-                href="https://twitter.com" 
+                href="https://x.com/KINSHUKSAXENA_" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
@@ -72,7 +72,7 @@ const Footer = () => {
                 <FaLinkedin />
               </motion.a>
               <motion.a 
-                href="https://youtube.com" 
+                href="https://www.youtube.com/@kinshuk._.saxena" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}

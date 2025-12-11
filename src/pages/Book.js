@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  FaCar, FaMoneyBillWave, FaRoute, FaMapMarkerAlt, 
+  FaCar, FaMoneyBillWave, FaRoute, 
   FaArrowRight, FaClock, FaUserFriends, FaCreditCard, 
   FaCheckCircle 
 } from 'react-icons/fa';

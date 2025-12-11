@@ -5,7 +5,6 @@ import {
   FaCalendarAlt, 
   FaMapMarkerAlt, 
   FaStar,
-  FaFilter,
   FaSearch,
   FaEye,
   FaTimes,
@@ -121,10 +120,12 @@ const BookingHistory = () => {
       setFilteredBookings(mockBookings);
       setLoading(false);
     }, 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     applyFilters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters, bookings]);
 
   const applyFilters = () => {

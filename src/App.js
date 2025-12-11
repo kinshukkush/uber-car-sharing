@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import LoadingSpinner from './components/LoadingSpinner';
 
 // Auth Pages
 import AuthPage from './pages/auth/AuthPage';
@@ -40,7 +39,7 @@ const MainLayout = ({ children }) => (
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/uber-car-sharing">
         <div className="App">
           <Routes>
             {/* Public Routes */}

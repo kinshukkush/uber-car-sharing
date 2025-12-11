@@ -6,19 +6,12 @@ import {
   FaRoute,
   FaCar,
   FaMoneyBillWave,
-  FaBuilding,
   FaUserTie,
   FaArrowRight,
   FaStar,
-  FaUserShield,
-  FaApple,
-  FaGoogle,
-  FaMapMarked,
   FaClock,
   FaShieldAlt,
-  FaLeaf,
   FaCreditCard,
-  FaPhoneAlt,
   FaTaxi,
   FaCalendarAlt,
   FaCheckCircle
@@ -30,7 +23,6 @@ import '../../components/Home.css';
 import UberImage from '../../assets/Ride-with-Uber.png';
 import CarImg from '../../assets/path-to-your-car-image.png';
 import DriverImg from '../../assets/driver-image.png';
-import fleetImg from '../../assets/fleet-management.jpg';
 
 const Home = () => {
   const [location, setLocation] = useState('');
@@ -316,7 +308,7 @@ const Home = () => {
                 <span className="price-label">Starting from</span>
                 <span className="price-amount">$10</span>
               </div>
-              <motion.button className="book-ride-btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/book', { state: { rideType: 'standard' } })}>Book Now</motion.button>
+              <motion.button className="book-ride-btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/uber-car-sharing/services', { state: { rideType: 'standard' } })}>Book Now</motion.button>
             </div>
           </motion.div>
           {/* Premium Card */}
@@ -337,7 +329,7 @@ const Home = () => {
                 <span className="price-label">Starting from</span>
                 <span className="price-amount">$25</span>
               </div>
-              <motion.button className="book-ride-btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/book', { state: { rideType: 'premium' } })}>Book Now</motion.button>
+              <motion.button className="book-ride-btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/uber-car-sharing/services', { state: { rideType: 'premium' } })}>Book Now</motion.button>
             </div>
           </motion.div>
           {/* Shared Card */}
@@ -358,7 +350,7 @@ const Home = () => {
                 <span className="price-label">Starting from</span>
                 <span className="price-amount">$7</span>
               </div>
-              <motion.button className="book-ride-btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/book', { state: { rideType: 'shared' } })}>Book Now</motion.button>
+              <motion.button className="book-ride-btn" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/uber-car-sharing/services', { state: { rideType: 'shared' } })}>Book Now</motion.button>
             </div>
           </motion.div>
         </div>
@@ -500,7 +492,7 @@ const Home = () => {
         <div className="cta-content">
           <h2>Ready to Get Started?</h2>
           <p>Join millions of satisfied users who trust CarShare for their daily rides.</p>
-          <motion.button className="cta-button" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/book')}>
+          <motion.button className="cta-button" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => navigate('/uber-car-sharing/services')}>
             Book Your Ride Now <FaArrowRight className="btn-icon" />
           </motion.button>
         </div>

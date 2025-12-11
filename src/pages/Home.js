@@ -105,11 +105,11 @@ const Home = () => {
       setTimeout(() => setShowError(false), 3000);
       return;
     }
-    navigate('/book', { state: { location, destination } });
+    navigate('/uber-car-sharing/services', { state: { location, destination } });
 
   const handleSeePrices = () => {
     if (location && destination) {
-      navigate('/book', { state: { location, destination } });
+      navigate('/uber-car-sharing/services', { state: { location, destination } });
     } else {
       // Enhanced error notification
       const errorElement = document.createElement('div');

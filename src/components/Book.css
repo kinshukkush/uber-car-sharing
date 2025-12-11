@@ -439,7 +439,141 @@
 }
 
 /* =============================================
-   7. RESPONSIVE DESIGN
+   7. ENHANCED ANIMATIONS
+   ============================================= */
+.car-option {
+  position: relative;
+  overflow: hidden;
+}
+
+.car-option::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(88, 166, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.car-option:hover::before {
+  left: 100%;
+}
+
+.booking-section {
+  transition: all 0.3s ease;
+}
+
+.booking-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.booking-section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.booking-section:nth-child(1) { animation-delay: 0s; }
+.booking-section:nth-child(2) { animation-delay: 0.2s; }
+.booking-section:nth-child(3) { animation-delay: 0.4s; }
+
+/* Car Features Animation */
+.car-features li {
+  animation: fadeInLeft 0.4s ease-out;
+  animation-fill-mode: both;
+}
+
+.car-features li:nth-child(1) { animation-delay: 0.1s; }
+.car-features li:nth-child(2) { animation-delay: 0.2s; }
+.car-features li:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Button Pulse Animation */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(88, 166, 255, 0);
+  }
+}
+
+.confirm-booking-btn:not(:disabled) {
+  animation: pulse 2s infinite;
+}
+
+/* Schedule Input Focus Effects */
+.schedule-item input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+  transform: scale(1.02);
+}
+
+/* Payment Method Hover */
+.payment-method {
+  position: relative;
+  overflow: hidden;
+}
+
+.payment-method::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(88, 166, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.payment-method:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Summary Sidebar Animation */
+.booking-summary-sidebar {
+  animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =============================================
+   8. RESPONSIVE DESIGN
    ============================================= */
 @media (max-width: 992px) {
   .booking-layout {
@@ -468,5 +602,15 @@
   .car-price {
     text-align: left;
     padding: 0 15px 15px;
+  }
+  .booking-header h1 {
+    font-size: 2rem;
+  }
+  .journey-path {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .schedule-options {
+    grid-template-columns: 1fr;
   }
 }

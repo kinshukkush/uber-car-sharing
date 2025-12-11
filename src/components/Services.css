@@ -147,7 +147,198 @@
 }
 
 /* =============================================
-   5. RESPONSIVE DESIGN
+   5. SERVICE OVERLAY & FEATURES
+   ============================================= */
+.service-image-container {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.service-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card:hover .service-overlay {
+  opacity: 1;
+}
+
+.service-location {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(88, 166, 255, 0.3);
+  padding: 6px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.service-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.feature-badge {
+  background: rgba(88, 166, 255, 0.1);
+  color: var(--accent-primary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid rgba(88, 166, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.feature-badge:hover {
+  background: rgba(88, 166, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* =============================================
+   6. WHY CHOOSE SECTION
+   ============================================= */
+.why-choose-section {
+  padding: 80px 20px;
+  background: var(--dark-secondary);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.why-choose-section h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 50px;
+  font-weight: 700;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefit-box {
+  background: var(--dark-primary);
+  padding: 40px 30px;
+  border-radius: 16px;
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.benefit-box:hover {
+  border-color: var(--accent-primary);
+  box-shadow: 0 10px 30px rgba(88, 166, 255, 0.2);
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.benefit-box h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.benefit-box p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* =============================================
+   7. DOWNLOAD APP SECTION
+   ============================================= */
+.download-app-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #1a1f2e, #0D1117);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-app-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at top right, rgba(88, 166, 255, 0.1), transparent 50%);
+  pointer-events: none;
+}
+
+.download-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.download-content h2 {
+  font-size: 3rem;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.download-content p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.app-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.app-store-btn, .play-store-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 30px;
+  background: var(--dark-secondary);
+  border: 2px solid var(--accent-primary);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.app-store-btn:hover, .play-store-btn:hover {
+  background: var(--accent-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(88, 166, 255, 0.3);
+}
+
+.btn-icon {
+  font-size: 1.5rem;
+}
+
+/* =============================================
+   8. RESPONSIVE DESIGN
    ============================================= */
 @media (max-width: 768px) {
   .services-container {
@@ -158,5 +349,19 @@
   }
   .services-grid {
     grid-template-columns: 1fr;
+  }
+  .why-choose-section h2, .download-content h2 {
+    font-size: 2rem;
+  }
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  .app-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .app-store-btn, .play-store-btn {
+    width: 100%;
+    max-width: 300px;
   }
 }
