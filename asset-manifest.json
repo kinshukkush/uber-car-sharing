@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/uber-car-sharing/static/css/main.2e463101.css",
-    "main.js": "/uber-car-sharing/static/js/main.65442e36.js",
+    "main.css": "/uber-car-sharing/static/css/main.efab7aa8.css",
+    "main.js": "/uber-car-sharing/static/js/main.8af7b6d7.js",
     "index.html": "/uber-car-sharing/index.html",
-    "main.2e463101.css.map": "/uber-car-sharing/static/css/main.2e463101.css.map",
-    "main.65442e36.js.map": "/uber-car-sharing/static/js/main.65442e36.js.map"
+    "main.efab7aa8.css.map": "/uber-car-sharing/static/css/main.efab7aa8.css.map",
+    "main.8af7b6d7.js.map": "/uber-car-sharing/static/js/main.8af7b6d7.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e463101.css",
-    "static/js/main.65442e36.js"
+    "static/css/main.efab7aa8.css",
+    "static/js/main.8af7b6d7.js"
   ]
 }
