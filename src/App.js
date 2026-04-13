@@ -1,131 +1,98 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { Toaster } from 'react-hot-toast';
+
 import { AuthProvider } from './contexts/AuthContext';
+import { BookingProvider } from './contexts/BookingContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
-// Auth Pages
+import Navbar from './components/layout/Navbar';
+import Footer from './pages/Footer'; // Sourced as per request
+import Home from './pages/Home';
 import AuthPage from './pages/auth/AuthPage';
-
-// Main Pages (Protected)
-import Home from './pages/dashboard/Home';
 import Book from './pages/Book';
-import AboutUs from './pages/AboutUs';
 import Services from './pages/Services';
+import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
-import LastPage from './pages/LastPage';
-import RentCar from './pages/RentCar';
 import Profile from './pages/Profile';
 import BookingHistory from './pages/BookingHistory';
 
-// Components
-import Navbar from './components/layout/Navbar';
-import Footer from './pages/Footer';
-import Toast from './components/Toast';
-
-// Styles
 import './App.css';
 
-// Layout Component
-const MainLayout = ({ children }) => (
-  <>
-    <Navbar />
-    <main style={{ paddingTop: '70px', minHeight: 'calc(100vh - 70px)' }}>
-      {children}
-    </main>
-    <Footer />
-  </>
-);
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<AuthPage />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<Contact />} />
+        
+        {/* Protected Routes */}
+        <Route 
+          path="/book" 
+          element={
+            <ProtectedRoute>
+              <Book />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/profile" 
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } 
+        />
+        <Route 
+          path="/history" 
+          element={
+            <ProtectedRoute>
+              <BookingHistory />
+            </ProtectedRoute>
+          } 
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 function App() {
   return (
     <AuthProvider>
-      <Router basename="/uber-car-sharing">
-        <div className="App">
-          <Routes>
-            {/* Public Routes */}
-            <Route path="/auth" element={<AuthPage />} />
-            
-            {/* Redirect root to auth if not logged in, or home if logged in */}
-            <Route path="/" element={<Navigate to="/auth" replace />} />
-            
-            {/* Protected Routes */}
-            <Route path="/home" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <Home />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/book" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <Book />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/about-us" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <AboutUs />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/services" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <Services />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/contact" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <Contact />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/lastpage" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <LastPage />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/rentcar" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <RentCar />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-
-            <Route path="/profile" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <Profile />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-
-            <Route path="/booking-history" element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <BookingHistory />
-                </MainLayout>
-              </ProtectedRoute>
-            } />
-            
-            <Route path="*" element={<Navigate to="/auth" replace />} />
-          </Routes>
-          <Toast />
-        </div>
-      </Router>
+      <BookingProvider>
+        <HashRouter>
+          <div className="App">
+            <Toaster 
+              position="top-center"
+              toastOptions={{
+                duration: 3000,
+                style: {
+                  background: '#1a1a2e',
+                  color: '#fff',
+                  border: '1px solid rgba(255, 255, 255, 0.1)'
+                },
+                success: {
+                  iconTheme: {
+                    primary: '#10b981',
+                    secondary: '#fff',
+                  },
+                },
+              }} 
+            />
+            <Navbar />
+            <div className="main-content page-container">
+              <AnimatedRoutes />
+            </div>
+            <Footer />
+          </div>
+        </HashRouter>
+      </BookingProvider>
     </AuthProvider>
   );
 }

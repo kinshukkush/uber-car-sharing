@@ -1,398 +1,224 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import toast from 'react-hot-toast';
 import { useAuth } from '../../contexts/AuthContext';
-import {
-  FaUser,
-  FaEnvelope,
-  FaLock,
-  FaEye,
-  FaEyeSlash,
-  FaGoogle,
-  FaFacebook,
-  FaApple,
-  FaCar,
-  FaCheckCircle,
-  FaTimes,
-  FaArrowRight,
-} from 'react-icons/fa';
 import './AuthPage.css';
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
+    name: '',
     email: '',
     password: '',
-    confirmPassword: '',
-    fullName: '',
     phone: ''
   });
-  const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [loginError, setLoginError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [particles, setParticles] = useState([]);
 
+  const { login, register } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const { login } = useAuth();
 
-  // Get the return URL from location state or default to '/home'
-  const from = location.state?.from?.pathname || '/home';
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
-    setErrors({});
-    setLoginError('');
-    setSuccessMessage('');
-  }, [isLogin]);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
+    // Generate random particles for background
+    const newParticles = Array.from({ length: 20 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 5 + 1,
+      duration: Math.random() * 20 + 10,
+      delay: Math.random() * 5
     }));
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
-  };
+    setParticles(newParticles);
+  }, []);
 
-  const validateForm = () => {
-    const newErrors = {};
-    
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email';
-    }
-
-    if (!formData.password.trim()) {
-      newErrors.password = 'Password is required';
-    } else if (!isLogin && formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
-    }
-
-    if (!isLogin) {
-      if (!formData.fullName?.trim()) {
-        newErrors.fullName = 'Full name is required';
-      }
-      
-      if (!formData.phone?.trim()) {
-        newErrors.phone = 'Phone number is required';
-      }
-      
-      if (formData.password !== formData.confirmPassword) {
-        newErrors.confirmPassword = 'Passwords do not match';
-      }
-    }
-    
-    return newErrors;
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoginError('');
-    setSuccessMessage('');
-    
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
     setIsLoading(true);
 
     try {
       if (isLogin) {
-        // Demo login logic - replace with your actual login logic
-        if (formData.email && formData.password) {
-          const userData = {
-            id: 1,
-            email: formData.email,
-            name: formData.email.split('@')[0],
-            type: 'user',
-            isAuthenticated: true
-          };
-          
-          await login(userData);
-          setSuccessMessage('Login successful!');
-          
-          // Clear form
-          setFormData({
-            email: '',
-            password: '',
-            confirmPassword: '',
-            fullName: '',
-            phone: ''
-          });
-
-          // Navigate to the return URL or home
-          setTimeout(() => {
-            navigate(from, { replace: true });
-          }, 1000);
-        } else {
-          throw new Error('Invalid credentials');
-        }
+        await login(formData.email, formData.password);
+        toast.success('Successfully logged in!');
       } else {
-        // Register logic
-        const userData = {
-          id: Date.now(),
+        await register({
+          name: formData.name,
           email: formData.email,
-          name: formData.fullName,
-          phone: formData.phone,
-          type: 'user',
-          isAuthenticated: true
-        };
-        
-        await login(userData);
-        setSuccessMessage('Account created successfully!');
-        
-        // Clear form
-        setFormData({
-          email: '',
-          password: '',
-          confirmPassword: '',
-          fullName: '',
-          phone: ''
+          password: formData.password,
+          phone: formData.phone
         });
-
-        // Navigate to home
-        setTimeout(() => {
-          navigate('/home', { replace: true });
-        }, 1000);
+        toast.success('Registration successful!');
       }
-    } catch (error) {
-      console.error('Authentication error:', error);
-      setLoginError(error.message || 'Authentication failed. Please try again.');
+      navigate(from, { replace: true });
+    } catch (err) {
+      toast.error(err.message || 'Authentication failed. Try demo@carshare.com / demo123');
+      // Shake animation effect could be triggered here by setting a state
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleSocialLogin = (platform) => {
-    setLoginError(`${platform} login coming soon!`);
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    exit: { opacity: 0, y: -20, transition: { duration: 0.3 } }
   };
 
-  // Rest of your JSX remains the same
   return (
-    <div className="auth-page">
-      <div className="auth-container">
-        <motion.div
-          className="auth-box"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* Header */}
-          <div className="auth-header">
-            <motion.div
-              className="logo"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            >
-              <FaCar className="logo-icon" />
-              <h1>CarRental</h1>
-            </motion.div>
-            <p className="header-text">
-              {isLogin ? 'Welcome back!' : 'Create your account'}
-            </p>
-          </div>
+    <motion.div 
+      className="auth-container"
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <div className="particles">
+        {particles.map(p => (
+          <div 
+            key={p.id} 
+            className="particle"
+            style={{
+              left: `${p.x}%`,
+              top: `${p.y}%`,
+              width: `${p.size}px`,
+              height: `${p.size}px`,
+              animationDuration: `${p.duration}s`,
+              animationDelay: `${p.delay}s`
+            }}
+          />
+        ))}
+      </div>
 
-          {/* Messages */}
-          <AnimatePresence>
-            {loginError && (
+      <div className="auth-card glass-panel">
+        <motion.div 
+          className="auth-header"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          <div className="auth-logo gradient-text">CarShare</div>
+          <h2>{isLogin ? 'Welcome Back' : 'Create Account'}</h2>
+          <p>{isLogin ? 'Enter your details to access your account' : 'Join the future of ride sharing'}</p>
+        </motion.div>
+
+        <form onSubmit={handleSubmit} className="auth-form">
+          <AnimatePresence mode="wait">
+            {!isLogin && (
               <motion.div
-                className="message error"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
+                key="register-fields"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="input-group-container"
               >
-                <FaTimes /> {loginError}
-              </motion.div>
-            )}
-            {successMessage && (
-              <motion.div
-                className="message success"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-              >
-                <FaCheckCircle /> {successMessage}
+                <div className="input-group">
+                  <label>Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="John Doe"
+                    required={!isLogin}
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Phone Number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+1 (555) 000-0000"
+                    required={!isLogin}
+                  />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="auth-form">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={isLogin ? 'login' : 'signup'}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
-                transition={{ duration: 0.3 }}
-              >
-                {!isLogin && (
-                  <>
-                    <div className="form-group">
-                      <div className="input-container">
-                        <FaUser className="input-icon" />
-                        <input
-                          type="text"
-                          name="fullName"
-                          placeholder="Full Name"
-                          value={formData.fullName}
-                          onChange={handleInputChange}
-                          className={errors.fullName ? 'error' : ''}
-                        />
-                      </div>
-                      {errors.fullName && <span className="error-text">{errors.fullName}</span>}
-                    </div>
+          <div className="input-group">
+            <label>Email Address</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="demo@carshare.com"
+              required
+            />
+          </div>
 
-                    <div className="form-group">
-                      <div className="input-container">
-                        <FaUser className="input-icon" />
-                        <input
-                          type="tel"
-                          name="phone"
-                          placeholder="Phone Number"
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className={errors.phone ? 'error' : ''}
-                        />
-                      </div>
-                      {errors.phone && <span className="error-text">{errors.phone}</span>}
-                    </div>
-                  </>
-                )}
+          <div className="input-group">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="••••••••"
+              required
+            />
+          </div>
 
-                <div className="form-group">
-                  <div className="input-container">
-                    <FaEnvelope className="input-icon" />
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email Address"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className={errors.email ? 'error' : ''}
-                    />
-                  </div>
-                  {errors.email && <span className="error-text">{errors.email}</span>}
-                </div>
-
-                <div className="form-group">
-                  <div className="input-container">
-                    <FaLock className="input-icon" />
-                    <input
-                      type={showPassword ? 'text' : 'password'}
-                      name="password"
-                      placeholder="Password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                      className={errors.password ? 'error' : ''}
-                    />
-                    <button
-                      type="button"
-                      className="password-toggle"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                  </div>
-                  {errors.password && <span className="error-text">{errors.password}</span>}
-                </div>
-
-                {!isLogin && (
-                  <div className="form-group">
-                    <div className="input-container">
-                      <FaLock className="input-icon" />
-                      <input
-                        type={showPassword ? 'text' : 'password'}
-                        name="confirmPassword"
-                        placeholder="Confirm Password"
-                        value={formData.confirmPassword}
-                        onChange={handleInputChange}
-                        className={errors.confirmPassword ? 'error' : ''}
-                      />
-                    </div>
-                    {errors.confirmPassword && (
-                      <span className="error-text">{errors.confirmPassword}</span>
-                    )}
-                  </div>
-                )}
-              </motion.div>
-            </AnimatePresence>
-
-            <motion.button
-              type="submit"
-              className="submit-button"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <div className="loader" />
-              ) : (
-                <>
-                  {isLogin ? 'Sign In' : 'Create Account'}
-                  <FaArrowRight />
-                </>
-              )}
-            </motion.button>
-          </form>
-
-          {/* Social Login */}
-          <div className="social-auth">
-            <div className="divider">or continue with</div>
-            <div className="social-buttons">
-              {['Google', 'Facebook', 'Apple'].map((provider) => (
-                <motion.button
-                  key={provider}
-                  className={`social-button ${provider.toLowerCase()}`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => handleSocialLogin(provider)}
-                >
-                  {provider === 'Google' && <FaGoogle />}
-                  {provider === 'Facebook' && <FaFacebook />}
-                  {provider === 'Apple' && <FaApple />}
-                </motion.button>
-              ))}
+          {isLogin && (
+            <div className="auth-options">
+              <label className="remember-me">
+                <input type="checkbox" />
+                <span>Remember me</span>
+              </label>
+              <button type="button" className="forgot-password">Forgot Password?</button>
             </div>
-          </div>
+          )}
 
-          {/* Toggle Login/Register */}
-          <div className="auth-footer">
-            <p>
-              {isLogin ? "Don't have an account?" : "Already have an account?"}
-              <motion.button
-                type="button"
-                className="toggle-auth"
-                onClick={() => {
-                  setIsLogin(!isLogin);
-                  setFormData({
-                    email: '',
-                    password: '',
-                    confirmPassword: '',
-                    fullName: '',
-                    phone: ''
-                  });
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {isLogin ? 'Sign Up' : 'Sign In'}
-              </motion.button>
-            </p>
+          <button 
+            type="submit" 
+            className="gradient-btn submit-btn"
+            disabled={isLoading}
+          >
+            {isLoading ? (
+              <span className="spinner"></span>
+            ) : (
+              isLogin ? 'Sign In' : 'Sign Up'
+            )}
+          </button>
+        </form>
+
+        <div className="auth-divider">
+          <span>or continue with</span>
+        </div>
+
+        <div className="social-login">
+          <button type="button" className="social-btn">G</button>
+          <button type="button" className="social-btn">f</button>
+          <button type="button" className="social-btn">in</button>
+        </div>
+
+        <p className="auth-toggle">
+          {isLogin ? "Don't have an account? " : "Already have an account? "}
+          <button 
+            type="button" 
+            onClick={() => setIsLogin(!isLogin)}
+            className="toggle-btn"
+          >
+            {isLogin ? 'Sign Up' : 'Sign In'}
+          </button>
+        </p>
+
+        {isLogin && (
+          <div className="demo-credentials">
+            <small>Demo: demo@carshare.com / demo123</small>
           </div>
-        </motion.div>
+        )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
