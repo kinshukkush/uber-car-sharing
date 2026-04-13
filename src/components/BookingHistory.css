@@ -1,0 +1,1556 @@
+/* ==================== BOOKING HISTORY PAGE ==================== */
+
+.booking-history-page {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  padding: 30px 20px 60px;
+  overflow: hidden;
+}
+
+/* Background Effects */
+.history-bg-effects {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.history-bg-effects .bg-gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.3;
+}
+
+.history-bg-effects .orb-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--primary);
+  top: -200px;
+  left: -200px;
+}
+
+.history-bg-effects .orb-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--secondary);
+  bottom: -150px;
+  right: -150px;
+}
+
+.history-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==================== HEADER ==================== */
+
+.history-header {
+  margin-bottom: 30px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-title .title-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+  padding: 15px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.header-title h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.header-title p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 5px 0 0 0;
+}
+
+/* ==================== STATS CARDS ==================== */
+
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.stat-icon.total {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--primary);
+}
+
+.stat-icon.completed {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+}
+
+.stat-icon.spent {
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--secondary);
+}
+
+.stat-icon.rating {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ==================== FILTERS SECTION ==================== */
+
+.filters-section {
+  margin-bottom: 20px;
+}
+
+.quick-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.quick-filters::-webkit-scrollbar {
+  height: 4px;
+}
+
+.quick-filters::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 2px;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 25px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(124, 58, 237, 0.15));
+  border-color: var(--filter-color, var(--primary));
+  color: var(--filter-color, var(--primary));
+}
+
+.filter-btn svg {
+  font-size: 0.9rem;
+}
+
+.filter-count {
+  background: var(--filter-color, var(--primary));
+  color: white;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Search and Advanced Filters */
+.search-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 45px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.clear-search {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.clear-search:hover {
+  color: var(--error);
+}
+
+.advanced-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.advanced-filter-btn:hover,
+.advanced-filter-btn.active {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.sort-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort-btn:hover,
+.sort-btn.active {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Advanced Filters Panel */
+.advanced-filters-panel {
+  background: rgba(26, 26, 46, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 15px;
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.date-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-inputs span {
+  color: var(--text-secondary);
+}
+
+.date-input {
+  flex: 1;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.clear-filters-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  color: var(--error);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clear-filters-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* Results Info */
+.results-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* ==================== RIDES LIST ==================== */
+
+.rides-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 60px 30px;
+}
+
+.empty-state .empty-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+.empty-state h3 {
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* ==================== RIDE CARD ==================== */
+
+.ride-card {
+  position: relative;
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.ride-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--status-color);
+}
+
+.ride-card:hover {
+  border-color: rgba(0, 212, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Header */
+.ride-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ride-date-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ride-date-info .date-icon {
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.date-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-main {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.date-time {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.ride-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.ride-status.status-completed {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+}
+
+.ride-status.status-cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--error);
+}
+
+.ride-status.status-ongoing {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+}
+
+/* Card Body */
+.ride-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 25px;
+  gap: 30px;
+}
+
+.ride-route {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.route-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.route-point .point-marker {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.route-point.pickup .point-marker {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--primary);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.route-point.destination .point-marker {
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--secondary);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.point-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.point-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.point-name {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.route-connector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0 10px 17px;
+}
+
+.connector-line {
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.connector-details {
+  display: flex;
+  gap: 15px;
+}
+
+.connector-details span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.connector-details svg {
+  color: var(--primary);
+}
+
+/* Price Section */
+.ride-price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+}
+
+.price-amount {
+  display: flex;
+  align-items: flex-start;
+}
+
+.price-amount .currency {
+  font-size: 1rem;
+  color: var(--primary);
+  margin-right: 2px;
+}
+
+.price-amount .price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.ride-type {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.ride-type svg {
+  color: var(--primary);
+}
+
+/* Card Actions */
+.ride-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rating-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.star-rating {
+  display: flex;
+  gap: 5px;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 2px;
+}
+
+.star-btn:not(:disabled):hover {
+  color: #f59e0b;
+  transform: scale(1.2);
+}
+
+.star-btn.filled {
+  color: #f59e0b;
+}
+
+.star-btn:disabled {
+  cursor: default;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid;
+}
+
+.action-btn.receipt {
+  background: rgba(124, 58, 237, 0.1);
+  border-color: rgba(124, 58, 237, 0.2);
+  color: var(--secondary);
+}
+
+.action-btn.receipt:hover {
+  background: rgba(124, 58, 237, 0.2);
+}
+
+.action-btn.rebook {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.2);
+  color: var(--primary);
+}
+
+.action-btn.rebook:hover {
+  background: rgba(0, 212, 255, 0.2);
+}
+
+/* Expand Button */
+.expand-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.expand-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--primary);
+}
+
+/* Expanded Details */
+.ride-expanded-details {
+  padding: 20px 25px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.expanded-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detail-item.discount .detail-value {
+  color: var(--success);
+}
+
+.expanded-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.expanded-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid;
+}
+
+.expanded-action-btn.share {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.2);
+  color: var(--primary);
+}
+
+.expanded-action-btn.share:hover {
+  background: rgba(0, 212, 255, 0.2);
+}
+
+.expanded-action-btn.support {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+}
+
+.expanded-action-btn.support:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+/* ==================== RECEIPT MODAL ==================== */
+
+.receipt-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.receipt-modal {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.receipt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.receipt-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.receipt-header h3 svg {
+  color: var(--primary);
+}
+
+.receipt-header .close-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.receipt-header .close-btn:hover {
+  color: var(--error);
+}
+
+.receipt-content {
+  padding: 25px;
+}
+
+.receipt-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.1);
+}
+
+.receipt-logo svg {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.receipt-logo span {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.receipt-section {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.receipt-section.route {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: none;
+}
+
+.receipt-point {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.receipt-point svg {
+  font-size: 1rem;
+}
+
+.receipt-point svg.pickup {
+  color: var(--primary);
+}
+
+.receipt-point svg.destination {
+  color: var(--secondary);
+}
+
+.receipt-point span {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.receipt-line {
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  margin-left: 7px;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.receipt-row span:first-child {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.receipt-row span:last-child {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.receipt-row.discount span:last-child {
+  color: var(--success);
+}
+
+.receipt-row.total {
+  padding-top: 15px;
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.receipt-row.total span:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.receipt-row.total span:last-child {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.receipt-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.receipt-rating span {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.receipt-rating .stars {
+  display: flex;
+  gap: 3px;
+}
+
+.receipt-rating .stars svg {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.1rem;
+}
+
+.receipt-rating .stars svg.filled {
+  color: #f59e0b;
+}
+
+.receipt-footer {
+  display: flex;
+  gap: 12px;
+  padding: 20px 25px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.receipt-footer button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.receipt-footer .download-btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border: none;
+  color: white;
+}
+
+.receipt-footer .download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+}
+
+.receipt-footer .share-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+}
+
+.receipt-footer .share-btn:hover {
+  border-color: var(--primary);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+/* ==================== GLASS CARD ==================== */
+
+.glass-card {
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+}
+
+/* ==================== BUTTONS ==================== */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--primary);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+/* ==================== GRADIENT TEXT ==================== */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+@media (max-width: 1024px) {
+  .stats-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .booking-history-page {
+    padding: 20px 15px 40px;
+  }
+
+  .header-title {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-title .title-icon {
+    font-size: 2rem;
+    padding: 12px;
+  }
+
+  .header-title h1 {
+    font-size: 1.8rem;
+  }
+
+  .stats-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+  }
+
+  .quick-filters {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .search-filters {
+    flex-direction: column;
+  }
+
+  .search-input-wrapper {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .advanced-filter-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sort-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .advanced-filters-panel {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .filter-group {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .clear-filters-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ride-card-body {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ride-price-section {
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .ride-card-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .rating-section {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .action-buttons {
+    justify-content: center;
+  }
+
+  .expanded-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expanded-actions {
+    flex-direction: column;
+  }
+
+  .receipt-modal {
+    max-width: 100%;
+    margin: 10px;
+    border-radius: 20px;
+  }
+
+  .receipt-footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .ride-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ride-status {
+    align-self: flex-start;
+  }
+
+  .route-point {
+    gap: 12px;
+  }
+
+  .route-point .point-marker {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+  }
+
+  .point-name {
+    font-size: 0.9rem;
+  }
+
+  .price-amount .price {
+    font-size: 1.6rem;
+  }
+
+  .star-btn {
+    font-size: 1.1rem;
+  }
+
+  .action-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .receipt-content {
+    padding: 20px;
+  }
+
+  .receipt-logo svg {
+    font-size: 1.5rem;
+  }
+
+  .receipt-logo span {
+    font-size: 1.2rem;
+  }
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* ==================== SCROLLBAR STYLING ==================== */
+
+.rides-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rides-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rides-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 3px;
+}
+
+.rides-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* ==================== FOCUS STATES ==================== */
+
+.filter-btn:focus,
+.search-input:focus,
+.date-input:focus,
+.action-btn:focus,
+.star-btn:focus,
+.expand-btn:focus {
+  outline: none;
+}
+
+.filter-btn:focus-visible,
+.action-btn:focus-visible,
+.expand-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ==================== HOVER EFFECTS ==================== */
+
+.ride-card.expanded {
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.ride-card:hover .expand-btn {
+  color: var(--primary);
+}
+
+/* ==================== LOADING STATES ==================== */
+
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ==================== TOOLTIP ==================== */
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+  bottom: calc(100% + 8px);
+}
+
+/* ==================== EMPTY STATE ANIMATIONS ==================== */
+
+.empty-state .empty-icon {
+  animation: emptyBounce 2s ease-in-out infinite;
+}
+
+@keyframes emptyBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ==================== CARD HOVER GRADIENT ==================== */
+
+.ride-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.05) 0%,
+    transparent 50%,
+    rgba(124, 58, 237, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.ride-card:hover::after {
+  opacity: 1;
+}
+
+/* ==================== STATUS DOT ANIMATION ==================== */
+
+.ride-status svg {
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.ride-status.status-ongoing svg {
+  animation: statusSpin 2s linear infinite;
+}
+
+@keyframes statusSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

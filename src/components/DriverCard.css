@@ -1,143 +1,846 @@
+/* ==================== DRIVER CARD STYLES ==================== */
+
 .driver-card {
-  padding: 20px;
   position: relative;
+  padding: 0;
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
   overflow: hidden;
-  margin-top: 20px;
-  border-color: var(--primary) !important;
+  margin-top: 15px;
 }
+
+.driver-card.compact {
+  padding: 15px;
+}
+
+/* ==================== STATUS BADGE ==================== */
+
+.driver-status-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05));
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  font-size: 0.85rem;
+  color: var(--success);
+  font-weight: 500;
+}
+
+.driver-status-badge .status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.driver-status-badge .status-icon {
+  font-size: 1rem;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+/* ==================== DRIVER HEADER ==================== */
 
 .driver-header {
   display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.driver-avatar-section {
+  position: relative;
 }
 
 .driver-avatar {
-  width: 50px;
-  height: 50px;
-  background: var(--gradient);
-  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: white;
-  margin-right: 15px;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
 }
 
+.driver-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.driver-avatar span {
+  text-transform: uppercase;
+}
+
+.avatar-badge {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 22px;
+  height: 22px;
+  background: var(--success);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: white;
+  border: 2px solid var(--surface);
+}
+
+.avatar-badge.verified {
+  background: #3b82f6;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+}
+
+.favorite-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.favorite-btn.active {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Driver Info */
 .driver-info {
   flex: 1;
+  min-width: 0;
+}
+
+.driver-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
 }
 
 .driver-info h3 {
-  margin: 0 0 5px 0;
-  font-size: 1.2rem;
-  color: white;
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
-.driver-rating {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 12px;
+  font-size: 0.7rem;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+.driver-stats {
+  margin-bottom: 8px;
+}
+
+.driver-stats .stat {
   display: flex;
   align-items: center;
   gap: 5px;
 }
 
-.driver-rating span {
-  color: white;
-  font-weight: bold;
+.driver-stats .stat.rating .star-icon {
+  color: #f59e0b;
+  font-size: 0.9rem;
 }
 
+.driver-stats .stat-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.driver-stats .stat-label {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.driver-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.driver-badges .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.driver-badges .badge.top-rated {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.driver-badges .badge.safe-driver {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* ETA Section */
 .driver-eta {
-  text-align: right;
-  background: rgba(0, 212, 255, 0.1);
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.eta-circle {
+  position: relative;
+  width: 65px;
+  height: 65px;
+}
+
+.eta-progress {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.eta-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
 }
 
 .eta-time {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary);
   font-family: 'Orbitron', sans-serif;
 }
 
-.eta-label {
-  font-size: 0.8rem;
+.eta-unit {
+  font-size: 0.65rem;
   color: var(--text-secondary);
   text-transform: uppercase;
 }
 
-.vehicle-details {
+.eta-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==================== VEHICLE SECTION ==================== */
+
+.vehicle-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vehicle-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.vehicle-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle-model {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.vehicle-color {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.vehicle-plate {
+  background: #f59e0b;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.plate-number {
+  font-family: 'Orbitron', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #000;
+  letter-spacing: 2px;
+}
+
+/* ==================== TRIP DETAILS SECTION ==================== */
+
+.trip-details-section {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.trip-route {
+  position: relative;
+  padding-left: 10px;
+}
+
+.route-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 8px 0;
+}
+
+.route-point .point-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.route-point .point-icon.pickup {
+  background: rgba(0, 212, 255, 0.15);
+  color: var(--primary);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.route-point .point-icon.destination {
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--secondary);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.route-point .point-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.route-point .point-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.route-point .point-name {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.trip-route .route-line {
+  position: absolute;
+  left: 24px;
+  top: 40px;
+  bottom: 40px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.trip-meta {
   display: flex;
   justify-content: space-between;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 12px 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.car-model {
-  font-weight: 600;
-  color: white;
+.trip-meta .meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
 }
 
-.car-plate {
-  font-family: 'Orbitron', monospace;
-  letter-spacing: 2px;
-  background: #ffcc00;
-  color: #000;
-  padding: 2px 8px;
-  border-radius: 4px;
+.trip-meta .meta-item svg {
+  color: var(--primary);
+}
+
+.trip-meta .meta-item.price {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.trip-meta .meta-item.price .currency {
   font-size: 0.9rem;
 }
 
+/* ==================== DRIVER ACTIONS ==================== */
+
 .driver-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.action-btn svg {
+  font-size: 1.2rem;
+}
+
+.action-btn span {
+  font-size: 0.75rem;
+}
+
+.action-btn.call-btn {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.action-btn.call-btn:hover {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 5px 20px rgba(16, 185, 129, 0.2);
+}
+
+.action-btn.message-btn {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.action-btn.message-btn:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2);
+}
+
+.action-btn.share-btn {
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--secondary);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+.action-btn.share-btn:hover {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 5px 20px rgba(124, 58, 237, 0.2);
+}
+
+.action-btn.safety-btn {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.2);
+}
+
+.action-btn.safety-btn:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 5px 20px rgba(245, 158, 11, 0.2);
+}
+
+/* ==================== QUICK MESSAGES PANEL ==================== */
+
+.quick-messages-panel {
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.quick-messages-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.quick-messages-header h4 {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.quick-messages-header button {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.quick-messages-header button:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--error);
+}
+
+.quick-messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.quick-message-btn {
+  width: 100%;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quick-message-btn:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.custom-message-input {
   display: flex;
   gap: 10px;
 }
 
-.action-btn {
+.custom-message-input input {
   flex: 1;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.custom-message-input input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.custom-message-input input::placeholder {
+  color: var(--text-secondary);
+}
+
+.custom-message-input .send-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border: none;
+  border-radius: 10px;
+  color: white;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.call-btn {
-  background: rgba(16, 185, 129, 0.1);
+.custom-message-input .send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.custom-message-input .send-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+}
+
+/* ==================== SAFETY PANEL ==================== */
+
+.safety-panel {
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.safety-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.safety-header svg:first-child {
   color: var(--success);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-size: 1.2rem;
 }
 
-.call-btn:hover {
-  background: rgba(16, 185, 129, 0.2);
+.safety-header h4 {
+  flex: 1;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  margin: 0;
 }
 
-.support-btn {
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+.safety-header button {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
-.support-btn:hover {
-  background: rgba(59, 130, 246, 0.2);
-}
-
-.cancel-btn {
-  background: rgba(239, 68, 68, 0.1);
-  color: var(--error);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.cancel-btn:hover {
+.safety-header button:hover {
   background: rgba(239, 68, 68, 0.2);
+  color: var(--error);
 }
+
+.safety-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.safety-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+}
+
+.safety-item .safety-icon {
+  font-size: 1.2rem;
+  color: var(--success);
+}
+
+.safety-item .safety-icon.verified {
+  color: #3b82f6;
+}
+
+.safety-item .safety-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.safety-item .safety-title {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.safety-item .safety-desc {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+.emergency-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  color: var(--error);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.emergency-btn:hover {
+  background: rgba(239, 68, 68, 0.25);
+  box-shadow: 0 5px 20px rgba(239, 68, 68, 0.2);
+}
+
+/* ==================== CANCEL SECTION ==================== */
+
+.cancel-section {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cancel-ride-btn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  color: var(--error);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.cancel-ride-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.cancel-confirm {
+  text-align: center;
+}
+
+.cancel-confirm p {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin: 0 0 5px 0;
+}
+
+.cancel-confirm .cancel-note {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 15px;
+}
+
+.confirm-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.confirm-btns button {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirm-btns .confirm-yes {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--error);
+}
+
+.confirm-btns .confirm-yes:hover {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+.confirm-btns .confirm-no {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--success);
+}
+
+.confirm-btns .confirm-no:hover {
+  background: rgba(16, 185, 129, 0.25);
+}
+
+/* ==================== SUPPORT LINK ==================== */
+
+.support-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.support-link svg {
+  color: var(--primary);
+}
+
+.support-link a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.support-link a:hover {
+  color: var(--secondary);
+}
+
+/* ==================== PROGRESS BAR ==================== */
 
 .driver-progress-bar {
   position: absolute;
@@ -148,7 +851,186 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-.progress-fill {
+.driver-progress-bar .progress-fill {
   height: 100%;
-  background: var(--gradient);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  position: relative;
+  overflow: hidden;
+}
+
+.driver-progress-bar .progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ==================== GLASS CARD ==================== */
+
+.glass-card {
+  background: rgba(26, 26, 46, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+@media (max-width: 768px) {
+  .driver-header {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .driver-avatar {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
+  
+  .driver-info h3 {
+    font-size: 1rem;
+  }
+  
+  .driver-badges {
+    margin-top: 5px;
+  }
+  
+  .driver-eta {
+    margin-left: auto;
+  }
+  
+  .eta-circle {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .eta-time {
+    font-size: 1.2rem;
+  }
+  
+  .driver-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .vehicle-section {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .vehicle-plate {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .driver-header {
+    padding: 15px;
+  }
+  
+  .driver-avatar-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .driver-info {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .driver-name-row {
+    justify-content: center;
+  }
+  
+  .driver-stats {
+    justify-content: center;
+  }
+  
+  .driver-stats .stat {
+    justify-content: center;
+  }
+  
+  .driver-badges {
+    justify-content: center;
+  }
+  
+  .driver-eta {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .vehicle-section {
+    padding: 12px 15px;
+  }
+  
+  .vehicle-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .vehicle-model {
+    font-size: 0.9rem;
+  }
+  
+  .driver-actions {
+    padding: 12px 15px;
+  }
+  
+  .action-btn {
+    padding: 10px 6px;
+  }
+  
+  .action-btn svg {
+    font-size: 1rem;
+  }
+  
+  .action-btn span {
+    font-size: 0.7rem;
+  }
+  
+  .trip-details-section {
+    padding: 15px;
+  }
+  
+  .cancel-section {
+    padding: 12px 15px;
+  }
+}
+
+/* ==================== HOVER EFFECTS ==================== */
+
+.driver-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+}
+
+/* ==================== FOCUS STATES ==================== */
+
+.action-btn:focus,
+.quick-message-btn:focus,
+.cancel-ride-btn:focus,
+.emergency-btn:focus {
+  outline: none;
+}
+
+.action-btn:focus-visible,
+.quick-message-btn:focus-visible,
+.cancel-ride-btn:focus-visible,
+.emergency-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
