@@ -344,12 +344,11 @@ const Footer = () => {
                   </div>
                   <div className="contact-text">
                     <span>Email</span>
-                    <a href="mailto:kinshuksaxena3@gmail.com">kinshuksaxena3@gmail.com</a>
+                    <a href="mailto:kinshuksaxena3@gmail.com">abhishek@gmail.com</a>
                   </div>
                 </div>
               </div>
-
-              {/* Working Hours */}
+              
               <div className="working-hours">
                 <h4>Working Hours</h4>
                 <p>24/7 - We never stop!</p>
@@ -380,7 +379,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="developer-link"
               >
-                Kinshuk Saxena
+                Abhishek
               </a>
             </p>
           </div>
