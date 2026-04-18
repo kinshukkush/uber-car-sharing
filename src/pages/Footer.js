@@ -84,11 +84,11 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaTwitter />, url: 'https://twitter.com', label: 'Twitter' },
+    { icon: <FaTwitter />, url: 'https://x.com/kinshuksaxena_', label: 'Twitter' },
     { icon: <FaLinkedinIn />, url: 'https://www.linkedin.com/in/kinshuk-saxena-/', label: 'LinkedIn' },
     { icon: <FaInstagram />, url: 'https://instagram.com/kinshuk._.saxena', label: 'Instagram' },
     { icon: <FaGithub />, url: 'https://github.com/kinshukkush', label: 'GitHub' },
-    { icon: <FaYoutube />, url: 'https://youtube.com', label: 'YouTube' }
+    { icon: <FaYoutube />, url: 'https://www.youtube.com/@kinshuk._.saxena', label: 'YouTube' }
   ];
 
   const containerVariants = {
@@ -326,7 +326,7 @@ const Footer = () => {
                   </div>
                   <div className="contact-text">
                     <span>Address</span>
-                    <p>123 Future Tech Blvd, Silicon Valley, CA 94025</p>
+                    <p>LPU, BH1, Phagwara, Punjab 144411</p>
                   </div>
                 </div>
                 <div className="contact-item">
@@ -344,7 +344,7 @@ const Footer = () => {
                   </div>
                   <div className="contact-text">
                     <span>Email</span>
-                    <a href="mailto:kinshuksaxena3@gmail.com">abhishek@gmail.com</a>
+                    <a href="mailto:kinshuksaxena3@gmail.com">kinshuksaxena3@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -379,7 +379,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="developer-link"
               >
-                Abhishek
+                Kinshuk Saxena
               </a>
             </p>
           </div>
